@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+html{
+    height:100%;
+}
+body{
+    height:100%;
+    /*background-color: #E25B57;*/
+    background-size:600px ;
+    padding: 0px;
+    margin: 0px;
+    /*font-family: 'Open Sans' , 'sans-serif';*/
+}
+.title{
+    transition: 1s;
+    margin-top: 20px;
+     background-color: #E25B57;
+}
+.about{
+}
+.main-title{
+    margin-top: 10px;
+    /*margin-bottom: 10px;*/
+}
+.title-img{
+    transition: 2s;
+}
+.title-img:hover {
+    -webkit-filter: brightness(70%); 
+
+}
+.my-dict:after {
+    content: " ";
+    display: block;
+    background-color: #E25B57;
+    height: 3px;
+    max-width: 300px;
+    margin: 20px auto;
+    border-radius: 20%;
+    margin-bottom: 0px;
+}
+.slaid{
+    margin-top:30px;
+}
+.stats{
+    margin-bottom: 30px;
+
+}
+.post-img{
+    transition: 2s;
+}
+.post-link:hover img{
+    -webkit-filter: brightness(70%); 
+}
+.search-but{
+    color: #E25B57;
+    border-color: #E25B57;
+}
+.search-but:hover{
+    background-color: #E25B57;
+    border-color: rgba(255,255,255,0.0);
+}
+
+/*dict*/
+.dict{
+    margin-top:30px;
+}
+.word{
+    cursor: pointer;
+
+}
+/*my acc*/
+.chek-color:active{
+    background-color: blue;
+}
+.chek-color{
+    margin-right: 4px;
+    background-color: red;
+    border:none;
+}
+.chek-color:nth-child(1){
+    background-color:#E25B57 ;
+}
+.chek-color:nth-child(2){
+    background-color: #F8F9FA;
+}
+.chek-color:nth-child(3){
+    background-color:#FFADA9 ;
+}
+.chek-color:nth-child(4){
+    background-color:#61B4C1 ;
+}
+.chek-color:nth-child(5){
+    background-color: #00FFA9;
+}
+#option2:checked .chek-color{
+   background-color: blue;
+}
+.acount{
+    min-height: 230px;
+}
+/*reg*/
+.input-register{
+    margin-top:20px;
+}
+.input-register-but{
+    height: calc(2.875rem + 2px);
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
