@@ -51,7 +51,11 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-            ],
+            '' => 'main/index',
+            'dictionary' => 'main/dictionary',
+            'register' => 'main/register',
+            'login' => 'main/login'
+                ],
         ],
 
     ],

@@ -36,21 +36,27 @@ AppAsset::register($this);
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Главноя</a>
+            <li class="nav-item <?php if (Html::encode($this->title)=="Main"){echo "active";};?> ">
+                <a class="nav-link" href="/">Главнaя</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Славарь</a>
+            <li class="nav-item <?php if (Html::encode($this->title)=="Dictionary"){echo "active";};?>">
+                <a class="nav-link" href="/dictionary">Славарь</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Статистика</a>
+            <li class="nav-item <?php if (Html::encode($this->title)=="Register"){echo "active";};?>" >
+                <a class="nav-link " href="/register">Регистрация</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Личный кабинет</a>
+            <li class="nav-item <?php if (Html::encode($this->title)=="Login"){echo "active";};?>" >
+                <a class="nav-link " href="/login">Вход</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Выход</a>
-            </li>
+<!--            <li class="nav-item ">-->
+<!--                <a class="nav-link disabled" href="#">Статистика</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Личный кабинет</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">Выход</a>-->
+<!--            </li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

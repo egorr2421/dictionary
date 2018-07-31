@@ -11,8 +11,25 @@ use yii\web\Controller;
 
 class MainController extends Controller
 {
-     public function actionIndex(){
-         return "hello word";
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
 
-     }
+
+    public function actionDictionary()
+    {
+        return $this->render('dictionary');
+    }
+
+    public function actionLogin()
+    {
+        return $this->render('login');
+    }
+
+
+    public function actionRegister()
+    {
+        return $this->render('register');
+    }
 }
