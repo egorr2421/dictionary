@@ -19,7 +19,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
+    <?php echo Html::csrfMetaTags(); ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="icon" type="image/png" href="/web/favicon.ico" />
     <?php $this->head() ?>
@@ -37,26 +37,29 @@ AppAsset::register($this);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php if (Html::encode($this->title)=="Main"){echo "active";};?> ">
-                <a class="nav-link" href="/">Главнaя</a>
+                 <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/index']) ?>">Главнaя</a>
             </li>
             <li class="nav-item <?php if (Html::encode($this->title)=="Dictionary"){echo "active";};?>">
-                <a class="nav-link" href="/dictionary">Славарь</a>
+                <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/dictionary']) ?>">Славарь</a>
             </li>
+            <?php if(!(\Yii::$app->session->get('user'))){?>
             <li class="nav-item <?php if (Html::encode($this->title)=="Register"){echo "active";};?>" >
-                <a class="nav-link " href="/register">Регистрация</a>
+                <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/register']) ?>">Регистрация</a>
             </li>
             <li class="nav-item <?php if (Html::encode($this->title)=="Login"){echo "active";};?>" >
-                <a class="nav-link " href="/login">Вход</a>
+                <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/login']) ?>">Вход</a>
             </li>
-<!--            <li class="nav-item ">-->
-<!--                <a class="nav-link disabled" href="#">Статистика</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Личный кабинет</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Выход</a>-->
-<!--            </li>-->
+            <?php }else{ ?>
+            <li class="nav-item ">
+                <a class="nav-link disabled" href="#">Статистика</a>
+            </li>
+            <li class="nav-item <?php if (Html::encode($this->title)=="account"){echo "active";};?> ">
+                <a class="nav-link" href="<?php echo \Yii::$app->urlManager->createUrl (['account/index'])?>">Личный кабинет</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo \Yii::$app->urlManager->createUrl (['account/exit'])?>">Выход</a>
+            </li>
+            <?php };?>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -64,7 +67,7 @@ AppAsset::register($this);
         </form>
     </div>
 </nav>
-        <?= Alert::widget() ?>
+<!--        --><?//= Alert::widget() ?>
         <?= $content ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

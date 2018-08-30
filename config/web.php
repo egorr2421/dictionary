@@ -54,7 +54,9 @@ $config = [
             '' => 'main/index',
             'dictionary' => 'main/dictionary',
             'register' => 'main/register',
-            'login' => 'main/login'
+            'login' => 'main/login',
+            'account' => 'account/index',
+            'exit' => 'account/exit',
                 ],
         ],
 

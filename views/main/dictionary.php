@@ -3,11 +3,12 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Dictionary';
+$this->registerJsFile('js/dictionary.js');
 ?>
 <div class="container-fluid about text-center">
     <div class="row" style="margin-top: 30px;">
         <div class="col">
-            <h2 >Main Dictionary</h2>
+            <h2 class="word1" >Main Dictionary</h2>
             <p class="my-dict">Сlick on the words to add it to the dictionary</p>
         </div>
     </div>
@@ -21,21 +22,19 @@ $this->title = 'Dictionary';
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Last Name</th>
+                    <th>Last Name</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="word">
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Last Name</td>
+                <?php foreach ($words as $key => $word):?>
+                <tr class="word" nameWord=<?= $word->id?>>
+                    <th scope="row"><?=($key+1) ?></th>
+                    <td><?= $word->infinitive?></td>
+                    <td><?=$word->past_simple ?></td>
+                    <td><?=$word->past_participle?></td>
+                    <td><?=$word->translation?></td>
                 </tr>
-                <tr class="word">
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Last Name</td>
-                </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

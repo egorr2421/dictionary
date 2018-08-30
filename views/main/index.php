@@ -9,7 +9,7 @@ $this->title = 'Main';
         <div class="row no-gutters"  >
             <div class="col-12 order-2 order-md-1 col-md div-img" style="position: relative;">
 
-                <img  class="w-100 title-img" src="/web/image/5138.jpg"alt="">
+                <img  class="w-100 title-img" src="/web/image/sl/5138.jpg"alt="">
             </div>
             <div class="col-12 order-1 order-md-2 col-md" style="background-color: rgba(0,0,0,0.2);">
                 <div class="row h-100"  >
