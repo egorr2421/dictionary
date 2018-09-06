@@ -29,7 +29,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-    <a class="navbar-brand" href="#"><img src="web/image/book.svg" width="30"></a>
+    <a class="navbar-brand" href="<?php echo \Yii::$app->urlManager->createUrl (['main/index']) ?>"><img src="web/image/book.svg" width="30"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,7 +40,7 @@ AppAsset::register($this);
                  <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/index']) ?>">Главнaя</a>
             </li>
             <li class="nav-item <?php if (Html::encode($this->title)=="Dictionary"){echo "active";};?>">
-                <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/dictionary']) ?>">Славарь</a>
+                <a class="nav-link" href=" <?php echo \Yii::$app->urlManager->createUrl (['main/dictionary']) ?>">Словарь</a>
             </li>
             <?php if(!(\Yii::$app->session->get('user'))){?>
             <li class="nav-item <?php if (Html::encode($this->title)=="Register"){echo "active";};?>" >

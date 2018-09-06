@@ -2,7 +2,7 @@
 
 $this->title="account";
 $this->registerJsFile('js/scriptAccount.js');
-$this->registerJsFile('js/dictionary.js');
+//$this->registerJsFile('js/dictionary.js');
 ?>
 <div id="title" class="title shadow-lg ">
 			<div class="container ">

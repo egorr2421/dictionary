@@ -1,9 +1,14 @@
 <?php
 
 /* @var $this yii\web\View */
+    $this->title = 'Dictionary';
+    if (\Yii::$app->session->get ('user')['login'] == 'admin') {
+        $this->registerJsFile('js/admin/adminScript.js?v=0.03',['depends' => 'app\assets\AppAsset']);
 
-$this->title = 'Dictionary';
-$this->registerJsFile('js/dictionary.js');
+    }else{
+        $this->registerJsFile('js/dictionary.js?v=0.010', ['depends' => 'app\assets\AppAsset']);
+    }
+
 ?>
 <div class="container-fluid about text-center">
     <div class="row" style="margin-top: 30px;">
@@ -13,16 +18,82 @@ $this->registerJsFile('js/dictionary.js');
         </div>
     </div>
 
+    <?php if (\Yii::$app->session->get ('user')['login'] == 'admin'){ ?>
+
+    <div class="container">
+            <div class="row justify-content-center input-register">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg" style="width: 120px;text-align: center;display: block; background-color: #212529;color: white;">Infinitive</span>
+                        </div>
+                        <input id="infinitive" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row justify-content-center ">
+                <div class="col-12 col-md-8 col-lg-6 ">
+                    <div class="input-group input-group-lg input-register">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg" style="width: 120px;text-align: center;display: block; background-color: #212529;color: white;">Past Sim.</span>
+                        </div>
+                        <input id="simple" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-center ">
+                <div class="col-12 col-md-8 col-lg-6 ">
+                    <div class="input-group input-group-lg input-register">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg" style="width: 120px;text-align: center;display: block; background-color: #212529;color: white;">Past Part.</span>
+                        </div>
+                        <input id="part" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row justify-content-center ">
+                <div class="col-12 col-md-8 col-lg-6 ">
+                    <div class="input-group input-group-lg input-register">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg" style="width: 120px;text-align: center;display: block; background-color: #212529;color: white;">Trans.</span>
+                        </div>
+                        <input id="translation" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center input-register">
+                <div class="col-12 col-md-8 col-lg-6 ">
+                    <div class="row justify-content-end" style="margin-bottom: 30px;">
+                        <div class="col-4">
+                            <div class="input-group-lg">
+
+                                <button id="admin_btn" class="btn btn-dark input-register-but " style="background-color: #212529;color: white;padding-left: 20px;padding-right: 20px; ">Add a word</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <?php } ?>
     <div class="dict">
         <div class="container">
-            <table class="table table-hover ">
+            <table id="irregular" class="table table-hover ">
                 <thead class="thead-dark">
                 <tr>
                     <th>№</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Last Name</th>
-                    <th>Last Name</th>
+                    <th>Infinitive</th>
+                    <th>Past Simple</th>
+                    <th>Past Participle</th>
+                    <th>Translation</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,4 +109,6 @@ $this->registerJsFile('js/dictionary.js');
                 </tbody>
             </table>
         </div>
+
     </div>
+    <button offset="10" type="button " id="add" class="btn btn-dark" style="margin-bottom: 30px;">Add more words</button>

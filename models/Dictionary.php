@@ -17,4 +17,17 @@ class Dictionary extends ActiveRecord
     {
         return '{{irregular_verbs}}';
     }
+    public function rules()
+    {
+        return [
+            ['infinitive','string', 'length' => [0, 40]],
+            ['infinitive','required','message'=>'Wrong infinitive'],
+            ['past_simple','string', 'length' => [0, 40]],
+            ['past_simple','required','message'=>'Wrong past simple'],
+            ['past_participle','string', 'length' => [0, 40]],
+            ['past_participle','required','message'=>'Wrong past participle'],
+            ['translation','string', 'length' => [0, 100]],
+            ['translation','required','message'=>'Wrong translation'],
+            ];
+    }
 }

@@ -29,18 +29,34 @@ class MainController extends Controller
 
     public function actionDictionary()
     {
-        if(\Yii::$app->request->isAjax){
-            $model = new WorkAccount();
-            $model->login = \Yii::$app->session->get ('user')['login'];
-            $model->words = \Yii::$app->request->post ('word');
-            if ($model->addWord ()) {
-            return json_encode (['a' => 'succesful']);
-        }
-            return json_encode (['a' => 'false']);
-        }
+        if(\Yii::$app->request->isAjax) {
+            if (\Yii::$app->session->get ('user') && \Yii::$app->request->isPost ) {
+                $model = new WorkAccount();
+                $model->login = \Yii::$app->session->get ('user')['login'];
+                $model->words = \Yii::$app->request->post ('word');
+                if ($model->addWord ()) {
+                    return json_encode (['a' => 'succesful']);
+                }
+                return json_encode (['a' => 'false']);
+            }elseif (\Yii::$app->request->isGet){
 
+
+                  $result = Dictionary::find ()
+                      ->orderBy ('infinitive')
+                      ->limit (10)
+                      ->offset (\Yii::$app->request->get ('offset'))
+                      ->all ();
+                    $number=0;
+                  foreach ($result  as $key => $value){
+                    $mas[]=$value->toArray();
+                    $number++;
+                  }
+
+                return json_encode(['mas'=>$mas,'a'=>'succesful','number'=>$number]);
+            }
+        }
         return $this->render('dictionary',[
-            'words' =>Dictionary::find ()->orderBy ('infinitive') ->all (),
+            'words' => Dictionary::find ()->orderBy ('infinitive')->limit (10)->offset (0) ->all (),
         ]);
     }
 
@@ -73,7 +89,7 @@ class MainController extends Controller
             $model->scenario = Users::SCENARIO_REGISTER;
 
             $model->login =  Html::encode (\Yii::$app->request->post ('login'));
-            $model->pass =  Html::encode (\Yii::$app->request->post ('pass'));
+            $model->pass  =  Html::encode (\Yii::$app->request->post ('pass'));
             $model->email =  Html::encode (\Yii::$app->request->post ('email'));
 
             if($model->validate () &&$model->validateInDatabase ()){

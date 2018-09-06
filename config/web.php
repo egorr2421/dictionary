@@ -57,6 +57,7 @@ $config = [
             'login' => 'main/login',
             'account' => 'account/index',
             'exit' => 'account/exit',
+            'admin' => 'account/admin',
                 ],
         ],
 
